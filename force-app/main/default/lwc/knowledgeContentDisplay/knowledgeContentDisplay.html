@@ -1,0 +1,164 @@
+<template>
+
+  <!-- <c-knowledge-lookup
+      onsearcharticle={handleArticleSearch}
+    ></c-knowledge-lookup> -->
+
+    <div style = "border-radius:5px; border-style:solid; border-width:3px; border-color: #DCE7F5; background-color: #E9F3FE; padding: 1rem;
+        font-size: 16px; font-weight: 600;">
+        <div style="font-size: 14px;">
+          Filters Applied
+        </div>
+        <br/>
+        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+          <div class="slds-size_1-of-4" style="padding-left: 5px; padding-right: 5px;">
+            <div class="">
+              Selected Category 
+              <div style="width: 12rem; margin-top: -16px;">
+                <lightning-input type="text" value={selectedCategory} disabled></lightning-input>
+              </div>
+            </div>
+          </div>
+          <div class="slds-size_1-of-4" style="padding-left: 5px; padding-right: 5px;">
+            <div class="">
+              Article Type
+
+          <lightning-combobox
+            name="progress"
+            value={value1}
+            options={options1}
+            onchange={handleChange1} style="margin-top: -16px; width: 85%;"></lightning-combobox>
+
+
+            </div>
+          </div>
+          <div class="slds-size_1-of-4" style="padding-left: 5px; padding-right: 5px;">
+            <div class="">
+              Language 
+
+              <lightning-combobox
+            name="progress"
+            value={value2}
+            options={options2}
+            onchange={handleChange2} style="margin-top: -16px; width: 85%;"></lightning-combobox>
+
+            </div>
+          </div>
+          <div class="slds-size_1-of-4" style="padding-left: 5px; padding-right: 5px; ">
+            <div class="">
+              SORT BY 
+              <lightning-combobox
+            name="progress"
+            value={value3}
+            options={options3}
+            onchange={handleChange3} style="margin-top: -16px; width: 85%;"></lightning-combobox>
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+  <template if:true={showArti}>
+    <div class="container" style="padding-left:4rem; padding-top:4rem;">
+
+  <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+    <template for:each={articleList} for:item="ar">
+      
+      <div key={ar.Id} data-id={ar.Id} class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small" style="width: 30%; border-width:2px; border-style: solid;border-color: #DCE7F5; cursor:pointer" onclick={tileClick}>
+        <img src={ar.Image__c} style="height:10rem;"/>
+        <div style="font-size: 15px; height:100px; font-weight:700; padding-top:2rem; padding-bottom:1rem">
+          {ar.Title}
+        </div>  
+        <div style="font-size: 10px;">
+          Published On: <lightning-formatted-date-time value={ar.LastPublishedDate} year="numeric" month="numeric" day="numeric" ></lightning-formatted-date-time>
+        </div>
+      </div>
+
+    </template>
+  </div>
+
+
+
+      <!-- <div class="title">{articleTitle}</div>
+      <div
+        class="slds-box demo-only demo-only--sizing slds-grid slds-wrap"
+        style="margin-top: 10px"
+      >
+        <div class="slds-size_1-of-4">
+          <div
+            class="
+              slds-box_x-small
+              slds-text-align_center
+              slds-m-around_x-small
+            "
+          >
+            {articleNumber}
+          </div>
+        </div>
+        <div class="slds-size_1-of-4">
+          <div
+            class="
+              slds-box_x-small
+              slds-text-align_center
+              slds-m-around_x-small
+            "
+          >
+            {recordType}
+          </div>
+        </div>
+        <div class="slds-size_1-of-4">
+          <div
+            class="
+              slds-box_x-small
+              slds-text-align_center
+              slds-m-around_x-small
+            "
+          >
+            {language}
+          </div>
+        </div>
+        <div class="slds-size_1-of-4">
+          <div
+            class="
+              slds-box_x-small
+              slds-text-align_center
+              slds-m-around_x-small
+            "
+          >
+            {versionNumber}
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <lightning-formatted-rich-text
+          value={articleDetail}
+        ></lightning-formatted-rich-text>
+      </div>
+ -->      <!-- <div class="feedback-container">
+        <div>Was this article Helpful ?</div>
+        <div style="margin-right: 10px; margin-left: 10px">
+          <b style="font-size: 16px; color: #050513">{likes}</b
+          ><lightning-button-icon
+            icon-name="utility:like"
+            data-type="up"
+            onclick={handleVote}
+            style="margin-right: 10px"
+          >
+          </lightning-button-icon>
+          <b style="font-size: 16px; color: #050513">{dislikes}</b
+          ><lightning-button-icon
+            onclick={handleVote}
+            data-type="down"
+            icon-name="utility:dislike"
+          ></lightning-button-icon>
+        </div>
+      </div> -->
+    </div>
+  </template>
+  <template if:true={noArt}>
+    No Art
+  </template>
+  <template if:false={showArti}>
+    <c-k-a-customillustration></c-k-a-customillustration>
+  </template>
+</template>

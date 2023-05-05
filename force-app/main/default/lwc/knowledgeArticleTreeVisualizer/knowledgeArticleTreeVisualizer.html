@@ -1,0 +1,21 @@
+<template>
+  <div class="slds-m-bottom_x-large container">
+   <!--  <c-knowledge-lookup
+      onsearcharticle={handleArticleSearch}
+    ></c-knowledge-lookup> -->
+
+    <div style="font-size: 20px; font-weight: 700; padding-left: 0.25rem; padding-top: 0.5rem">
+      
+    <lightning-icon icon-name="utility:knowledge_base"></lightning-icon> 
+     <span> Knowledge Library</span>
+    </div><br/>
+
+    <div class="lgc-bg">
+      <lightning-tree
+        items={categories}
+        onselect={handleArticleSelect}
+        selected-item={recordId}
+      ></lightning-tree>
+    </div>
+  </div>
+</template>
